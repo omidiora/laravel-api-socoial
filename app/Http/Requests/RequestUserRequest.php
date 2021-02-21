@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Models\User;
 
 class RequestUserRequest extends FormRequest
 {
@@ -28,7 +29,9 @@ class RequestUserRequest extends FormRequest
 
     public function rules() {
         return [
-            'title'=>'required|min:4|max:100',
+            'name'=>'required|min:4|max:100',
+            'email'=>'required|unique:users,email',
+            'password'=>'required|confirmed',
         ];
      }
  
